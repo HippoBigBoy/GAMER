@@ -1,0 +1,5 @@
+Assumption 1: The file with provided with the Planets and their distances will always be in an excel format as
+provided in the assignment zip
+Potential Enhancement: Accept other files and formats of this data ie JSON, XML or other entry points ie an
+external webservice call
+
