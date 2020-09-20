@@ -5,7 +5,6 @@ import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
-import za.co.dinoko.assignment.ayeshaMatwadia.entities.Graph;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.DijkstraAlgorithm;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
