@@ -1,6 +1,7 @@
 package za.co.dinoko.assignment.ayeshaMatwadia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
@@ -11,6 +12,7 @@ import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.TestService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class TestController {
@@ -46,12 +48,12 @@ public class TestController {
 //        List<Vertex> s = dijkstraAlgorithm.getShortestPath(v3);
 //        System.out.println(s);
 
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Vertex c = new Vertex("c");
-        Vertex d = new Vertex("d");
-        Vertex e = new Vertex("e");
-        Vertex f = new Vertex("f");
+        Vertex a = new Vertex("a", "Earth");
+        Vertex b = new Vertex("b", "Moon");
+        Vertex c = new Vertex("c", "Venus");
+        Vertex d = new Vertex("d", "Pluto");
+        Vertex e = new Vertex("e", "Jupiter");
+        Vertex f = new Vertex("f", "Genesis");
 
         a.addNeighbour(new Edge(1,a, b));
         b.addNeighbour(new Edge(1,b, c));
@@ -69,7 +71,13 @@ public class TestController {
 
     @GetMapping("/read")
     public String readFile() {
-        readFileService.readDataFromExcelFile();
+        Map<String,Vertex> v = readFileService.readDataFromExcelFileAndCreateVertexMap();
+
+        for (Map.Entry<String, Vertex> entry : v.entrySet()) {
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
+
+        System.out.println(v.toString());
         return "readingFile";
     }
 }

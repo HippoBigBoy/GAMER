@@ -3,20 +3,24 @@ package za.co.dinoko.assignment.ayeshaMatwadia.entities;
 import java.util.*;
 
 public class Vertex implements Comparable<Vertex> {
-    private String label;
+    private String planetNode;
+    private String planetName;
     private List<Edge> edges;
     private boolean visited;
     private Vertex previousVertex;
     private double minDistance = Double.MAX_VALUE;
 
-    public Vertex(String label) {
-        this.label = label;
+    public Vertex(String planetNode, String planetName) {
+        this.planetNode = planetNode;
+        this.planetName = planetName;
         this.edges = new ArrayList<>();
     }
 
-    public void addNeighbour(Edge edge) {
-        this.edges.add(edge);
-    }
+    public String getPlanetNode() { return planetNode; }
+
+    public String getPlanetName() { return planetName; }
+
+    public void addNeighbour(Edge edge) { this.edges.add(edge); }
 
     public List<Edge> getEdges() {
         return edges;
@@ -52,7 +56,7 @@ public class Vertex implements Comparable<Vertex> {
 
     @Override
     public String toString() {
-        return label;
+        return planetName;
     }
 
     @Override

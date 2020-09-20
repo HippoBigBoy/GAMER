@@ -6,3 +6,6 @@ external webservice call
 Design Decision: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
 interacting with Microsoft documents.
 
+Assumption 2 : I assumed that the data provided in the document is a set ie it does not have any duplicates.
+I have continued coding to this assumption but a possible improvement would be making the List of vertices I build
+from the document bulletproof.
