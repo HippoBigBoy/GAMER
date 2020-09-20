@@ -1,28 +1,62 @@
 package za.co.dinoko.assignment.ayeshaMatwadia.entities;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-public class Vertex {
-
-    String label;
-    private Set<Edge> edges;
+public class Vertex implements Comparable<Vertex> {
+    private String label;
+    private List<Edge> edges;
+    private boolean visited;
+    private Vertex previousVertex;
+    private double minDistance = Double.MAX_VALUE;
 
     public Vertex(String label) {
         this.label = label;
-        this.edges = new HashSet<>();
+        this.edges = new ArrayList<>();
     }
 
-    public void addEdge(Edge edge){
-        edges.add(edge);
+    public void addNeighbour(Edge edge) {
+        this.edges.add(edge);
     }
 
-    public String getLabel() {
+    public List<Edge> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(List<Edge> edges) {
+        this.edges = edges;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public Vertex getPreviousVertex() {
+        return previousVertex;
+    }
+
+    public void setPreviousVertex(Vertex previousVertex) {
+        this.previousVertex = previousVertex;
+    }
+
+    public double getMinDistance() {
+        return minDistance;
+    }
+
+    public void setMinDistance(double minDistance) {
+        this.minDistance = minDistance;
+    }
+
+    @Override
+    public String toString() {
         return label;
     }
 
-    public Set<Edge> getEdges() {
-        return edges;
+    @Override
+    public int compareTo(Vertex otherVertex) {
+        return Double.compare(this.minDistance, otherVertex.minDistance);
     }
 }

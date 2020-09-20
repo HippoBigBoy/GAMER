@@ -3,20 +3,37 @@ package za.co.dinoko.assignment.ayeshaMatwadia.entities;
 import java.util.Objects;
 
 public class Edge {
-    private Vertex to;
-    private int weight;
+    private double weight;
+    private Vertex startVertex;
+    private Vertex targetVertex;
 
-    public Edge(Vertex to, int weight) {
-        super();
-        this.to = to;
+    public Edge(double weight, Vertex startVertex, Vertex targetVertex) {
+        this.weight = weight;
+        this.startVertex = startVertex;
+        this.targetVertex = targetVertex;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public Vertex getTo() {
-        return to;
+    public Vertex getStartVertex() {
+        return startVertex;
     }
 
-    public int getWeight() {
-        return weight;
+    public void setStartVertex(Vertex startVertex) {
+        this.startVertex = startVertex;
+    }
+
+    public Vertex getTargetVertex() {
+        return targetVertex;
+    }
+
+    public void setTargetVertex(Vertex targetVertex) {
+        this.targetVertex = targetVertex;
     }
 }
