@@ -3,3 +3,6 @@ provided in the assignment zip
 Potential Enhancement: Accept other files and formats of this data ie JSON, XML or other entry points ie an
 external webservice call
 
+Design Decision: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
+interacting with Microsoft documents.
+

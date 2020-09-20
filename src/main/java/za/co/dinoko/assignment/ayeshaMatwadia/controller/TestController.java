@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Graph;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Vertex;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.TestService;
 
 @RestController
@@ -13,6 +14,9 @@ public class TestController {
 
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private ReadFileService readFileService;
 
     @GetMapping("/greeting")
     public String greeting() {
@@ -41,5 +45,11 @@ public class TestController {
         graph.addVertex(v4); graph.addVertex(v5);
 //        return testService.helloWorld();
         return graph.getVertices().toString();
+    }
+
+    @GetMapping("/read")
+    public String readFile() {
+        readFileService.readDataFromExcelFile();
+        return "readingFile";
     }
 }
