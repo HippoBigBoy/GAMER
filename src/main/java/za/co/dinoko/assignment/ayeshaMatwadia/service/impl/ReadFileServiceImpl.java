@@ -81,9 +81,7 @@ public class ReadFileServiceImpl implements ReadFileService {
 //
 //               making sure we add the reverse edge
                 destinationVertex.addNeighbour(new Edge(distance, destinationVertex, originVertex));
-                System.out.println("9");
                 vertices.put(destinationVertexString, destinationVertex);
-                System.out.println("10");
             }
         }
         return vertices;

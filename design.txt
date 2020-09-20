@@ -14,3 +14,5 @@ Design Decision 2: When combing through the data I found that the routes had a n
 in the planets sheet. In this case my implementation will add the Planet to the Map before trying to creating
 the edge for it. (NullPointerException). The name of a planet that appears in the routes but not in the planets
 list will be a random String
+
+Design Decision 3: The endpoints accept JSON and return JSON

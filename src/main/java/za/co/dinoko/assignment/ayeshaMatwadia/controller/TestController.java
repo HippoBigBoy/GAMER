@@ -34,37 +34,13 @@ public class TestController {
 
     @GetMapping("/dijkstra")
     public String doThis() {
-//        Vertex v1 = new Vertex("A");
-//        Vertex v2 = new Vertex("B");
-//        Vertex v3 = new Vertex("C");
-//
-//        v1.addNeighbour(new Edge(1, v1, v2));
-//        v1.addNeighbour(new Edge(10, v1, v2));
-//
-//        v2.addNeighbour(new Edge(1, v2, v3));
-//
-//        dijkstraAlgorithm.computePath(v1);
-//
-//        List<Vertex> s = dijkstraAlgorithm.getShortestPath(v3);
-//        System.out.println(s);
+        Map<String,Vertex> v = readFileService.readDataFromExcelFileAndCreateVertexMap();
+        Vertex earth = v.get("A");
+        Vertex farPlanet = v.get("K'");
 
-        Vertex a = new Vertex("a", "Earth");
-        Vertex b = new Vertex("b", "Moon");
-        Vertex c = new Vertex("c", "Venus");
-        Vertex d = new Vertex("d", "Pluto");
-        Vertex e = new Vertex("e", "Jupiter");
-        Vertex f = new Vertex("f", "Genesis");
+        dijkstraAlgorithm.computePath(earth);
 
-        a.addNeighbour(new Edge(1,a, b));
-        b.addNeighbour(new Edge(1,b, c));
-        c.addNeighbour(new Edge(1,c, d));
-        d.addNeighbour(new Edge(1,d, e));
-        e.addNeighbour(new Edge(1,e, f));
-        a.addNeighbour(new Edge(10,a, f));
-
-        dijkstraAlgorithm.computePath(a);
-
-        List<Vertex> s = dijkstraAlgorithm.getShortestPath(f);
+        List<Vertex> s = dijkstraAlgorithm.getShortestPath(farPlanet);
 
         return s.toString();
     }
@@ -76,8 +52,6 @@ public class TestController {
         for (Map.Entry<String, Vertex> entry : v.entrySet()) {
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
-
-        System.out.println(v.toString());
         return "readingFile";
     }
 }
