@@ -3,6 +3,7 @@ package za.co.dinoko.assignment.ayeshaMatwadia.service.impl;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
+import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 
@@ -19,18 +20,20 @@ public class ReadFileServiceImpl implements ReadFileService {
      String fileName = "SupportData-V1.xlsx";
      try {
          FileInputStream fileInputStream = getFileFromResources(fileName);
-         Map<String, Vertex> vertices = createVerticesFromFileInputStream(fileInputStream);
-         return vertices;
+         Workbook apachePOIWorkbook = new XSSFWorkbook(fileInputStream);
+         Sheet firstSheet = apachePOIWorkbook.getSheetAt(0);
+         Sheet secondSheet = apachePOIWorkbook.getSheetAt(1);
+         Map<String, Vertex> verticesMap = createVerticesFromFileInputStream(firstSheet);
+         Map<String, Vertex> verticesWithEdges = addEdgesToVertices(secondSheet, verticesMap);
+         return verticesWithEdges;
      }catch(Exception e) {
          System.out.println("Find not found");
-         throw new RuntimeException("IO Exception");
+         throw new RuntimeException(e);
      }
     }
 
-    private Map<String ,Vertex> createVerticesFromFileInputStream(FileInputStream fileInputStream) throws IOException {
+    private Map<String ,Vertex> createVerticesFromFileInputStream(Sheet firstSheet) throws IOException {
         Map<String, Vertex> vertices = new HashMap();
-        Workbook apachePOIWorkbook = new XSSFWorkbook(fileInputStream);
-        Sheet firstSheet = apachePOIWorkbook.getSheetAt(0);
         Iterator<Row> iterator = firstSheet.iterator();
         while (iterator.hasNext()) {
             Row nextRow = iterator.next();
@@ -50,10 +53,41 @@ public class ReadFileServiceImpl implements ReadFileService {
         return vertices;
     }
 
-//    private List<Vertex> addEdgesToVertices(List<Vertex> vertices) {
+    private Map<String, Vertex> addEdgesToVertices(Sheet secondSheet , Map<String, Vertex> vertices) {
+        System.out.println("The hashmap keyset is: "+ " " + vertices.keySet());
+        Iterator<Row> iterator = secondSheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if(checkIfRowIsEmpty(nextRow)){
+                break;
+            }
+            else if(nextRow.getRowNum() == 0) {
+                continue;
+            }
+            else {
+                String originVertexString = nextRow.getCell(1).getStringCellValue();
+                String destinationVertexString = nextRow.getCell(2).getStringCellValue();
+                double distance = nextRow.getCell(3).getNumericCellValue();
+                if(!vertices.containsKey(originVertexString)){
+                    vertices.put(originVertexString, new Vertex(originVertexString, UUID.randomUUID().toString()));
+                }
+                if(!vertices.containsKey(destinationVertexString)){
+                    vertices.put(destinationVertexString, new Vertex(destinationVertexString, UUID.randomUUID().toString()));
+                }
+                Vertex originVertex = vertices.get(originVertexString);
+                Vertex destinationVertex = vertices.get(destinationVertexString);
+                originVertex.addNeighbour(new Edge(distance, originVertex, destinationVertex));
+                vertices.put(originVertexString, originVertex);
 //
-//        ???
-//    }
+//               making sure we add the reverse edge
+                destinationVertex.addNeighbour(new Edge(distance, destinationVertex, originVertex));
+                System.out.println("9");
+                vertices.put(destinationVertexString, destinationVertex);
+                System.out.println("10");
+            }
+        }
+        return vertices;
+    }
 
     private FileInputStream getFileFromResources(String nameOfFile) throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();

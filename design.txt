@@ -3,9 +3,14 @@ provided in the assignment zip
 Potential Enhancement: Accept other files and formats of this data ie JSON, XML or other entry points ie an
 external webservice call
 
-Design Decision: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
+Design Decision 1: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
 interacting with Microsoft documents.
 
 Assumption 2 : I assumed that the data provided in the document is a set ie it does not have any duplicates.
 I have continued coding to this assumption but a possible improvement would be making the List of vertices I build
 from the document bulletproof.
+
+Design Decision 2: When combing through the data I found that the routes had a node L' that was not included
+in the planets sheet. In this case my implementation will add the Planet to the Map before trying to creating
+the edge for it. (NullPointerException). The name of a planet that appears in the routes but not in the planets
+list will be a random String
