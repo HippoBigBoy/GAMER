@@ -28,9 +28,15 @@ start-Earth destination-Moon distance-0.44
 I assumed you would be able to travel backwards as well ie
 start-Moon destination-Earth distance-0.44
 
+Assumption 4 : I when building out the CRUD service I assumed the user that was using this service knew
+the galaxy very well and would not delete a critical node or planet. As a potential improvement to this, I would
+implement the checking of the CRUD operations first ie making sure a user isn't deleting a critical node or planet
+I would also make sure the neccessary routes are deleted when a planet is deleted.
+
 Design Decision 2: When combing through the data I found that the routes had a node L' that was not included
 in the planets sheet. In this case my implementation will add the Planet to the Map before trying to creating
 the edge for it. (I was experiencig a NullPointerException for this case).
 The name of a planet that appears in the routes but not in the planets list will be a randomly generated String
 
 Design Decision 3: The endpoints accept JSON and return JSON
+
