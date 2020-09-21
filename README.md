@@ -11,7 +11,7 @@ mvn clean install
 mvn spring-boot:run
 
 # Your JSON Requests
-
+POST
 http://localhost:8080/shortestPath
 
 {

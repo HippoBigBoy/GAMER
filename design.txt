@@ -1,5 +1,6 @@
 Your JSON Requests for getting the shortest path between 2 planets (Planet Node Names Provided)
 
+POST
 http://localhost:8080/shortestPath
 {
 	"startPlanet": "A",
