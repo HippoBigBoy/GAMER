@@ -4,7 +4,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
-import za.co.dinoko.assignment.ayeshaMatwadia.entities.Graph;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 
@@ -17,7 +16,7 @@ import java.util.*;
 @Service
 public class ReadFileServiceImpl implements ReadFileService {
     @Override
-    public Graph readDataFromExcelFileAndCreateVertexMap() {
+    public Map<String, Vertex> readDataFromExcelFileAndCreateVertexMap() {
      String fileName = "SupportData-V1.xlsx";
      try {
          FileInputStream fileInputStream = getFileFromResources(fileName);
@@ -26,7 +25,7 @@ public class ReadFileServiceImpl implements ReadFileService {
          Sheet secondSheet = apachePOIWorkbook.getSheetAt(1);
          Map<String, Vertex> verticesMap = createVerticesFromFileInputStream(firstSheet);
          Map<String, Vertex> verticesWithEdges = addEdgesToVertices(secondSheet, verticesMap);
-         return new Graph(verticesWithEdges);
+        return verticesWithEdges;
      }catch(Exception e) {
          System.out.println("Find not found");
          throw new RuntimeException(e);

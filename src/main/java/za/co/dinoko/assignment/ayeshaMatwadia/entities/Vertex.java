@@ -3,11 +3,19 @@ package za.co.dinoko.assignment.ayeshaMatwadia.entities;
 import java.util.*;
 
 public class Vertex implements Comparable<Vertex> {
+
+    private Long id;
+
     private String planetNode;
+
     private String planetName;
+
     private List<Edge> edges;
+
     private boolean visited;
+
     private Vertex previousVertex;
+
     private double minDistance = Double.MAX_VALUE;
 
     public Vertex(String planetNode, String planetName) {
