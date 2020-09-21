@@ -44,5 +44,6 @@ Design Decision 3: The endpoints accept JSON and return JSON
 Improvements: Given the time I would add the following
 1. Logging
 2. Swagger Documentation
+3. Exception handling for Invalid requests
 
 
