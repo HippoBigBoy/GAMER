@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
+import za.co.dinoko.assignment.ayeshaMatwadia.entities.Graph;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 
@@ -16,7 +17,7 @@ import java.util.*;
 @Service
 public class ReadFileServiceImpl implements ReadFileService {
     @Override
-    public Map<String ,Vertex> readDataFromExcelFileAndCreateVertexMap() {
+    public Graph readDataFromExcelFileAndCreateVertexMap() {
      String fileName = "SupportData-V1.xlsx";
      try {
          FileInputStream fileInputStream = getFileFromResources(fileName);
@@ -25,7 +26,7 @@ public class ReadFileServiceImpl implements ReadFileService {
          Sheet secondSheet = apachePOIWorkbook.getSheetAt(1);
          Map<String, Vertex> verticesMap = createVerticesFromFileInputStream(firstSheet);
          Map<String, Vertex> verticesWithEdges = addEdgesToVertices(secondSheet, verticesMap);
-         return verticesWithEdges;
+         return new Graph(verticesWithEdges);
      }catch(Exception e) {
          System.out.println("Find not found");
          throw new RuntimeException(e);
@@ -54,7 +55,6 @@ public class ReadFileServiceImpl implements ReadFileService {
     }
 
     private Map<String, Vertex> addEdgesToVertices(Sheet secondSheet , Map<String, Vertex> vertices) {
-        System.out.println("The hashmap keyset is: "+ " " + vertices.keySet());
         Iterator<Row> iterator = secondSheet.iterator();
         while (iterator.hasNext()) {
             Row nextRow = iterator.next();
@@ -78,7 +78,6 @@ public class ReadFileServiceImpl implements ReadFileService {
                 Vertex destinationVertex = vertices.get(destinationVertexString);
                 originVertex.addNeighbour(new Edge(distance, originVertex, destinationVertex));
                 vertices.put(originVertexString, originVertex);
-//
 //               making sure we add the reverse edge
                 destinationVertex.addNeighbour(new Edge(distance, destinationVertex, originVertex));
                 vertices.put(destinationVertexString, destinationVertex);

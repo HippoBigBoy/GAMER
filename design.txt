@@ -6,9 +6,8 @@ http://localhost:8080/shortestPath
 	"destinationPlanet": "B"
 }
 
-
 Credit where credit is due: I made use of the following github project for modelling and implementing
-a shortest path algorithm for a Graph structure in JAVA
+a shortest path algorithm (Dijkstra Algorithm) for a Graph structure in JAVA
 https://gist.github.com/artlovan/a07f29e16ab725f8077157de7abdf125
 
 Assumption 1: The file provided with the Planets and their distances will always be in an excel format as
