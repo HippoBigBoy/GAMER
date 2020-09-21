@@ -15,8 +15,8 @@ public class RouteServiceImpl implements RouteService {
     RouteRepository routeRepository;
 
     @Override
-    public void create(int routeId, String planetOrigin, String planetDestination, double distanceLightYears) {
-        routeRepository.save(new Route(routeId, planetOrigin, planetDestination, distanceLightYears));
+    public void create(Route route) {
+        routeRepository.save(route);
     }
 
     @Override
@@ -25,19 +25,17 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public void update(int routeId, String planetOrigin, String planetDestination, double distanceLightYears) {
-
+    public void update(Route route) {
 //      todo handle the below Option
-        Route routeFromRepo = routeRepository.findById(routeId).get();
-        routeFromRepo.setRouteId(routeId);
-        routeFromRepo.setPlanetOrigin(planetOrigin);
-        routeFromRepo.setPlanetDestination(planetDestination);
-        routeFromRepo.setDistanceLightYears(distanceLightYears);
+        Route routeFromRepo = routeRepository.findById(route.getRouteId()).get();
+        routeFromRepo.setPlanetOrigin(route.getPlanetOrigin());
+        routeFromRepo.setPlanetDestination(route.getPlanetDestination());
+        routeFromRepo.setDistanceLightYears(route.getDistanceLightYears());
         routeRepository.save(routeFromRepo);
     }
 
     @Override
-    public void delete(int routeId) {
-        routeRepository.deleteById(routeId);
+    public void delete(Route route) {
+        routeRepository.delete(route);
     }
 }

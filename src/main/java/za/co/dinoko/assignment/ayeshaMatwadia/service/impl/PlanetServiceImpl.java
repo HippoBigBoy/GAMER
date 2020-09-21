@@ -15,8 +15,8 @@ public class PlanetServiceImpl implements PlanetService {
     PlanetRepository planetRepository;
 
     @Override
-    public void create(String planetNode, String planetName) {
-       planetRepository.save(new Planet(planetNode, planetName));
+    public void create(Planet planet) {
+       planetRepository.save(planet);
     }
 
     @Override
@@ -25,16 +25,15 @@ public class PlanetServiceImpl implements PlanetService {
     }
 
     @Override
-    public void update(String planetNode, String planetName) {
+    public void update(Planet planet) {
 //        Todo handle the option below better
-       Planet planetFromRepository = planetRepository.findById(planetNode).get();
-       planetFromRepository.setPlanetNode(planetNode);
-       planetFromRepository.setPlanetName(planetName);
+       Planet planetFromRepository = planetRepository.findById(planet.getPlanetNode()).get();
+       planetFromRepository.setPlanetName(planet.getPlanetName());
        planetRepository.save(planetFromRepository);
     }
 
     @Override
-    public void delete(String planetNode) {
-        planetRepository.deleteById(planetNode);
+    public void delete(Planet planet) {
+        planetRepository.delete(planet);
     }
 }

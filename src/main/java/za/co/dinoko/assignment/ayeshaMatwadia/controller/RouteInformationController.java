@@ -15,12 +15,8 @@ public class RouteInformationController {
     RouteService routeService;
 
     @PostMapping(value = "/route/create")
-    public void create(@RequestBody Map<String, String> payload) {
-        int routeId = Integer.parseInt(payload.get("routeId"));
-        String planetOrigin = payload.get("planetOrigin");
-        String planetDestination = payload.get("planetDestination");
-        double distance = Double.parseDouble(payload.get("distance"));
-        routeService.create(routeId, planetOrigin, planetDestination, distance);
+    public void create(@RequestBody Route route) {
+        routeService.create(route);
     }
 
     @GetMapping(value = "/route/read")
@@ -29,17 +25,12 @@ public class RouteInformationController {
     }
 
     @PutMapping(value = "/route/update")
-    public void update(@RequestBody Map<String, String> payload) {
-        int routeId = Integer.parseInt(payload.get("routeId"));
-        String planetOrigin = payload.get("planetOrigin");
-        String planetDestination = payload.get("planetDestination");
-        double distance = Double.parseDouble(payload.get("distance"));
-        routeService.update(routeId, planetOrigin, planetDestination, distance);
+    public void update(@RequestBody Route route) {
+        routeService.update(route);
     }
 
     @DeleteMapping(value = "/route/delete")
-    public void delete(@RequestBody Map<String, String> payload) {
-        int routeId = Integer.parseInt(payload.get("routeId"));
-        routeService.delete(routeId);
+    public void delete(@RequestBody Route route) {
+        routeService.delete(route);
     }
 }

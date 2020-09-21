@@ -1,12 +1,12 @@
 package za.co.dinoko.assignment.ayeshaMatwadia.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import za.co.dinoko.assignment.ayeshaMatwadia.model.ShortestPathRequest;
 import za.co.dinoko.assignment.ayeshaMatwadia.model.Vertex;
-import za.co.dinoko.assignment.ayeshaMatwadia.service.DijkstraAlgorithm;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.ShortestPathService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class ShortestPathController {
@@ -15,19 +15,11 @@ public class ShortestPathController {
     private ReadFileService readFileService;
 
     @Autowired
-    private DijkstraAlgorithm dijkstraAlgorithm;
+    private ShortestPathService shortestPathService;
 
     @PostMapping(value = "/shortestPath")
-    public String doThis(@RequestBody Map<String, String> payload) {
-        boolean payLoadValuesAreNull = payload.get("startPlanet") == null || payload.get("destinationPlanet") == null;
-        if(!payLoadValuesAreNull){
-           String origin = payload.get("startPlanet").toUpperCase();
-           String destination = payload.get("destinationPlanet").toUpperCase();
-           List<Vertex> s = dijkstraAlgorithm.getShortestPath(origin, destination);
+    public String getShortestPath(@RequestBody ShortestPathRequest request) {
+           List<Vertex> s = shortestPathService.getShortestPath(request.getStartPlanet(), request.getDestinationPlanet());
            return s.toString();
-       } else {
-           return "{'error': 'Sorry you need to provide a startPlanet and a " +
-                   "destinationPlanet in the JSON you send to this endpoint'}";
-       }
     }
 }

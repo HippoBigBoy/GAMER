@@ -5,8 +5,8 @@ import za.co.dinoko.assignment.ayeshaMatwadia.entities.Route;
 import java.util.List;
 
 public interface RouteService {
-    void create(int routeId, String planetOrigin, String planetDestination, double distanceLightYears);
+    void create(Route route);
     List<Route> read();
-    void update(int routeId, String planetOrigin, String planetDestination, double distanceLightYears);
-    void delete(int routeId);
+    void update(Route route);
+    void delete(Route route);
 }

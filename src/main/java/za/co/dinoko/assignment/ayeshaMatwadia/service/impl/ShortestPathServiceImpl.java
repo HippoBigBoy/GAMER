@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.dinoko.assignment.ayeshaMatwadia.model.Edge;
 import za.co.dinoko.assignment.ayeshaMatwadia.model.Vertex;
-import za.co.dinoko.assignment.ayeshaMatwadia.service.DijkstraAlgorithm;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.ShortestPathService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.PlanetService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.VertexEdgeService;
@@ -12,7 +12,7 @@ import za.co.dinoko.assignment.ayeshaMatwadia.service.VertexEdgeService;
 import java.util.*;
 
 @Service
-public class DijkstraAlgorithmImpl implements DijkstraAlgorithm {
+public class ShortestPathServiceImpl implements ShortestPathService {
 
     @Autowired
     PlanetService planetService;

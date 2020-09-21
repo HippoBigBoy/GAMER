@@ -15,10 +15,8 @@ public class PlanetInformationController {
     PlanetService planetService;
 
     @PostMapping(value = "/planet/create")
-    public void create(@RequestBody Map<String, String> payload) {
-        String planetNode = payload.get("planetNode");
-        String planetName = payload.get("planetName");
-        planetService.create(planetNode, planetName);
+    public void create(@RequestBody Planet planet) {
+        planetService.create(planet);
     }
 
     @GetMapping(value = "/planet/read")
@@ -27,16 +25,13 @@ public class PlanetInformationController {
     }
 
     @PutMapping(value ="/planet/update")
-    public void update(@RequestBody Map<String, String> payload) {
-        String planetNode = payload.get("planetNode");
-        String planetName = payload.get("planetName");
-        planetService.update(planetNode, planetName);
+    public void update(@RequestBody Planet planet) {
+        planetService.update(planet);
     }
 
     @DeleteMapping(value = "/planet/delete")
-    public void delete(@RequestBody Map<String, String> payload) {
-        String planetNode = payload.get("planetNode");
-        planetService.delete(planetNode);
+    public void delete(@RequestBody Planet planet) {
+        planetService.delete(planet);
     }
 
 }
