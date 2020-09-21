@@ -3,7 +3,18 @@ Imagine you are on a ship in the near future navigating the galaxy. You want to 
 
 # how to run this program
 from your terminal cd into the root
+
 run
+
 mvn clean install
 
 mvn spring-boot:run
+
+# Your JSON Requests
+
+http://localhost:8080/shortestPath
+
+{
+	"startPlanet": "A",
+	"destinationPlanet": "B"
+}

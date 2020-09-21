@@ -1,18 +1,37 @@
-Assumption 1: The file with provided with the Planets and their distances will always be in an excel format as
-provided in the assignment zip
+Your JSON Requests for getting the shortest path between 2 planets (Planet Node Names Provided)
+
+http://localhost:8080/shortestPath
+{
+	"startPlanet": "A",
+	"destinationPlanet": "B"
+}
+
+
+Credit where credit is due: I made use of the following github project for modelling and implementing
+a shortest path algorithm for a Graph structure in JAVA
+https://gist.github.com/artlovan/a07f29e16ab725f8077157de7abdf125
+
+Assumption 1: The file provided with the Planets and their distances will always be in an excel format as
+provided in the assignment zip. It will always follow the format defined in it ie 2 sheets. First sheet
+with the planets and the 2nd sheet containing the distances between planets
 Potential Enhancement: Accept other files and formats of this data ie JSON, XML or other entry points ie an
-external webservice call
+external webservice call.
 
 Design Decision 1: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
-interacting with Microsoft documents.
+interacting with Microsoft documents. I made use of Apache POI for reading and parsing the data in the excel document.
 
 Assumption 2 : I assumed that the data provided in the document is a set ie it does not have any duplicates.
 I have continued coding to this assumption but a possible improvement would be making the List of vertices I build
-from the document bulletproof.
+from the document bulletproof ie cater for the possibility of duplicates
+
+Assumption 3 : I built a bi directional Graph. For example, if the Routes had an entry:
+start-Earth destination-Moon distance-0.44
+I assumed you would be able to travel backwards as well ie
+start-Moon destination-Earth distance-0.44
 
 Design Decision 2: When combing through the data I found that the routes had a node L' that was not included
 in the planets sheet. In this case my implementation will add the Planet to the Map before trying to creating
-the edge for it. (NullPointerException). The name of a planet that appears in the routes but not in the planets
-list will be a random String
+the edge for it. (I was experiencig a NullPointerException for this case).
+The name of a planet that appears in the routes but not in the planets list will be a randomly generated String
 
 Design Decision 3: The endpoints accept JSON and return JSON
