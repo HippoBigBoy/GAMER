@@ -1,10 +1,4 @@
-package za.co.dinoko.assignment.ayeshaMatwadia.entities;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Objects;
+package za.co.dinoko.assignment.ayeshaMatwadia.model;
 
 public class Edge {
     private Long id;

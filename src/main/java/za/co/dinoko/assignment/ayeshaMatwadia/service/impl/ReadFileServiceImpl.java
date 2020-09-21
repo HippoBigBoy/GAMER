@@ -3,8 +3,8 @@ package za.co.dinoko.assignment.ayeshaMatwadia.service.impl;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
-import za.co.dinoko.assignment.ayeshaMatwadia.entities.Edge;
-import za.co.dinoko.assignment.ayeshaMatwadia.entities.Vertex;
+import za.co.dinoko.assignment.ayeshaMatwadia.model.Edge;
+import za.co.dinoko.assignment.ayeshaMatwadia.model.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 
 import java.io.File;

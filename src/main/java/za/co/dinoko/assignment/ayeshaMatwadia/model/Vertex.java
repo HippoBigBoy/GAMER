@@ -1,4 +1,4 @@
-package za.co.dinoko.assignment.ayeshaMatwadia.entities;
+package za.co.dinoko.assignment.ayeshaMatwadia.model;
 
 import java.util.*;
 
