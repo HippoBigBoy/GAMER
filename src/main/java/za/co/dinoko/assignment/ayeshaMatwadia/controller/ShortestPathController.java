@@ -21,11 +21,9 @@ public class ShortestPathController {
     public String doThis(@RequestBody Map<String, String> payload) {
         boolean payLoadValuesAreNull = payload.get("startPlanet") == null || payload.get("destinationPlanet") == null;
         if(!payLoadValuesAreNull){
-           Map<String, Vertex> v = readFileService.readDataFromExcelFileAndCreateVertexMap();
-           Vertex earth = v.get(payload.get("startPlanet").toUpperCase());
-           Vertex farPlanet = v.get(payload.get("destinationPlanet").toUpperCase());
-           dijkstraAlgorithm.computePath(earth);
-           List<Vertex> s = dijkstraAlgorithm.getShortestPath(farPlanet);
+           String origin = payload.get("startPlanet").toUpperCase();
+           String destination = payload.get("destinationPlanet").toUpperCase();
+           List<Vertex> s = dijkstraAlgorithm.getShortestPath(origin, destination);
            return s.toString();
        } else {
            return "{'error': 'Sorry you need to provide a startPlanet and a " +

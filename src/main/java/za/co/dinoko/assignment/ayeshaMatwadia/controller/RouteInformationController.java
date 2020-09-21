@@ -2,9 +2,8 @@ package za.co.dinoko.assignment.ayeshaMatwadia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import za.co.dinoko.assignment.ayeshaMatwadia.entities.Planet;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Route;
-import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteCRUDService;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteService;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,7 @@ import java.util.Map;
 public class RouteInformationController {
 
     @Autowired
-    RouteCRUDService routeCRUDService;
+    RouteService routeCRUDService;
 
     @PostMapping(value = "/route/create")
     public void create(@RequestBody Map<String, String> payload) {

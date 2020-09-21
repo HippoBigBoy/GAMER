@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Planet;
 import za.co.dinoko.assignment.ayeshaMatwadia.repository.PlanetRepository;
-import za.co.dinoko.assignment.ayeshaMatwadia.service.PlanetCRUDService;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.PlanetService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class PlanetCRUDServiceImpl implements PlanetCRUDService {
+public class PlanetServiceImpl implements PlanetService {
 
     @Autowired
     PlanetRepository planetRepository;

@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface DijkstraAlgorithm {
 
-    public void computePath(Vertex sourceVertex);
-
-    public List<Vertex> getShortestPath(Vertex targetVertex);
+    public List<Vertex> getShortestPath(String startVertex,String targetVertex);
 
 }

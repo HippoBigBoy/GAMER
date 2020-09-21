@@ -2,15 +2,14 @@ package za.co.dinoko.assignment.ayeshaMatwadia.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.co.dinoko.assignment.ayeshaMatwadia.entities.Planet;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Route;
 import za.co.dinoko.assignment.ayeshaMatwadia.repository.RouteRepository;
-import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteCRUDService;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteService;
 
 import java.util.List;
 
 @Service
-public class RouteCRUDServiceImpl implements RouteCRUDService {
+public class RouteServiceImpl implements RouteService {
 
     @Autowired
     RouteRepository routeRepository;

@@ -7,9 +7,8 @@ import za.co.dinoko.assignment.ayeshaMatwadia.model.Vertex;
 import java.util.List;
 import java.util.Map;
 
-public interface ReadFileService {
+public interface VertexEdgeService {
 
-    List<Planet> readPlanetsFromFile();
+    Map<String, Vertex> getVertexWithEdgeMap(List<Planet> planets, List<Route> routes);
 
-    List<Route> readRoutesFromFile();
 }

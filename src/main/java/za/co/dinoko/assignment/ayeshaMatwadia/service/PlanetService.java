@@ -4,7 +4,7 @@ import za.co.dinoko.assignment.ayeshaMatwadia.entities.Planet;
 
 import java.util.List;
 
-public interface PlanetCRUDService {
+public interface PlanetService {
 
     void create(String planetNode, String planetName);
     List<Planet> read();
