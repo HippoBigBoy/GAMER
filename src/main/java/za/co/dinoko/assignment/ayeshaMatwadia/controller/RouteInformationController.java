@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Route;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteService;
-
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class RouteInformationController {
