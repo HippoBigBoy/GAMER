@@ -12,31 +12,31 @@ import java.util.Map;
 public class PlanetInformationController {
 
     @Autowired
-    PlanetService planetCRUDService;
+    PlanetService planetService;
 
     @PostMapping(value = "/planet/create")
     public void create(@RequestBody Map<String, String> payload) {
         String planetNode = payload.get("planetNode");
         String planetName = payload.get("planetName");
-        planetCRUDService.create(planetNode, planetName);
+        planetService.create(planetNode, planetName);
     }
 
     @GetMapping(value = "/planet/read")
     public List<Planet> read(){
-        return planetCRUDService.read();
+        return planetService.read();
     }
 
     @PutMapping(value ="/planet/update")
     public void update(@RequestBody Map<String, String> payload) {
         String planetNode = payload.get("planetNode");
         String planetName = payload.get("planetName");
-        planetCRUDService.update(planetNode, planetName);
+        planetService.update(planetNode, planetName);
     }
 
     @DeleteMapping(value = "/planet/delete")
     public void delete(@RequestBody Map<String, String> payload) {
         String planetNode = payload.get("planetNode");
-        planetCRUDService.delete(planetNode);
+        planetService.delete(planetNode);
     }
 
 }

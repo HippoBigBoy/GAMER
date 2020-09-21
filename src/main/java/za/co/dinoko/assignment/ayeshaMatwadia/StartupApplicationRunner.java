@@ -28,8 +28,6 @@ public class StartupApplicationRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         List<Planet> planets = readFileService.readPlanetsFromFile();
         List<Route> routes = readFileService.readRoutesFromFile();
-        System.out.println("There are how many planets " + planets.size());
-        System.out.println("There are how many routes " + routes.size());
         planetRepository.saveAll(planets);
         routeRepository.saveAll(routes);
     }

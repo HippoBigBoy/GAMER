@@ -1,8 +1,6 @@
 package za.co.dinoko.assignment.ayeshaMatwadia.model;
 
 public class Edge {
-    private Long id;
-
     private double weight;
     private Vertex startVertex;
     private Vertex targetVertex;

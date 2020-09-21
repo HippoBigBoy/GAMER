@@ -12,7 +12,7 @@ import java.util.Map;
 public class RouteInformationController {
 
     @Autowired
-    RouteService routeCRUDService;
+    RouteService routeService;
 
     @PostMapping(value = "/route/create")
     public void create(@RequestBody Map<String, String> payload) {
@@ -20,12 +20,12 @@ public class RouteInformationController {
         String planetOrigin = payload.get("planetOrigin");
         String planetDestination = payload.get("planetDestination");
         double distance = Double.parseDouble(payload.get("distance"));
-        routeCRUDService.create(routeId, planetOrigin, planetDestination, distance);
+        routeService.create(routeId, planetOrigin, planetDestination, distance);
     }
 
     @GetMapping(value = "/route/read")
     public List<Route> read(){
-        return routeCRUDService.read();
+        return routeService.read();
     }
 
     @PutMapping(value = "/route/update")
@@ -34,12 +34,12 @@ public class RouteInformationController {
         String planetOrigin = payload.get("planetOrigin");
         String planetDestination = payload.get("planetDestination");
         double distance = Double.parseDouble(payload.get("distance"));
-        routeCRUDService.update(routeId, planetOrigin, planetDestination, distance);
+        routeService.update(routeId, planetOrigin, planetDestination, distance);
     }
 
     @DeleteMapping(value = "/route/delete")
     public void delete(@RequestBody Map<String, String> payload) {
         int routeId = Integer.parseInt(payload.get("routeId"));
-        routeCRUDService.delete(routeId);
+        routeService.delete(routeId);
     }
 }
