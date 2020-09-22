@@ -46,4 +46,8 @@ Improvements: Given the time I would add the following
 2. Swagger Documentation
 3. Exception handling for Invalid requests
 
+Assumption 5: I assumed that the contract for making requests to my shortest path service would always be followed,
+an origin and destination planet would be specified and those are planets that exist on the system. Given more time
+I would make this more robust. Correctly handling incorrect requests or nodes that do no exist in the system
+
 
