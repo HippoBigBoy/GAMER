@@ -14,14 +14,16 @@ import java.util.*;
 @Service
 public class ShortestPathServiceImpl implements ShortestPathService {
 
-    @Autowired
-    PlanetService planetService;
+    private PlanetService planetService;
+    private RouteService routeService;
+    private VertexEdgeService vertexEdgeService;
 
     @Autowired
-    RouteService routeService;
-
-    @Autowired
-    VertexEdgeService vertexEdgeService;
+    public ShortestPathServiceImpl(PlanetService planetService, RouteService routeService, VertexEdgeService vertexEdgeService) {
+        this.planetService = planetService;
+        this.routeService = routeService;
+        this.vertexEdgeService = vertexEdgeService;
+    }
 
     private void computePath(Vertex sourceVertex) {
         sourceVertex.setMinDistance(0);

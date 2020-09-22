@@ -63,4 +63,18 @@ public class Vertex implements Comparable<Vertex> {
     public int compareTo(Vertex otherVertex) {
         return Double.compare(this.minDistance, otherVertex.minDistance);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex vertex = (Vertex) o;
+        return Objects.equals(planetNode, vertex.planetNode) &&
+                Objects.equals(planetName, vertex.planetName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(planetNode, planetName);
+    }
 }

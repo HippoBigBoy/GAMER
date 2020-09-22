@@ -20,15 +20,13 @@ public class ReadFileServiceTest {
     @Test
     public void passingNullAsFileToReadPlanetsThrowsException(){
         assertThrows(Exception.class,
-                () -> readFileService.readPlanetsFromFile(null),
-                "");
+                () -> readFileService.readPlanetsFromFile(null));
     }
 
     @Test
     public void passingNullAsFileToReadRoutesThrowsException(){
         assertThrows(Exception.class,
-                () -> readFileService.readRoutesFromFile(null),
-                "");
+                () -> readFileService.readRoutesFromFile(null));
     }
 
     @Test
@@ -64,7 +62,7 @@ public class ReadFileServiceTest {
     public void readingAValidAndPopulatedPlanetRoutesFromFileShouldReturnAListOfRoutes(){
         File emptyExcelFile = getFile("MockTestData1.xlsx");
         List<Route> routeList =  readFileService.readRoutesFromFile(emptyExcelFile);
-        assertFalse(!routeList.isEmpty());
+        assertFalse(routeList.isEmpty());
         assert(routeList.equals(getExpectedRouteMockData1()));
     }
 
