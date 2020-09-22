@@ -41,7 +41,7 @@ the galaxy very well and would not delete a critical node or planet. As a potent
 implement the checking of the CRUD operations first ie making sure a user isn't deleting a critical node or planet
 I would also make sure the neccessary routes are deleted when a planet is deleted.
 
-Assumption 5: I assumed that the contract for making requests to my shortest path service would always be followed,
+Assumption 5: I assumed that the contract for making requests to my shortest path endpoint would always be followed,
 an origin and destination planet would be specified and those are planets that exist on the system. Given more time
 I would make this more robust. Correctly handling incorrect requests or nodes that do no exist in the system
 
