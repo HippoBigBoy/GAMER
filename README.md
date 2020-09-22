@@ -10,6 +10,11 @@ mvn clean install
 
 mvn spring-boot:run
 
+# how to run tests
+(windows)
+
+.\mvnw test
+
 # Your JSON Requests
 POST
 http://localhost:8080/shortestPath
