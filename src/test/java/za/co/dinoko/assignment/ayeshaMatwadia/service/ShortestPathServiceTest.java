@@ -3,15 +3,11 @@ package za.co.dinoko.assignment.ayeshaMatwadia.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.co.dinoko.assignment.ayeshaMatwadia.TestData;
-import za.co.dinoko.assignment.ayeshaMatwadia.model.Edge;
 import za.co.dinoko.assignment.ayeshaMatwadia.model.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.impl.ShortestPathServiceImpl;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;

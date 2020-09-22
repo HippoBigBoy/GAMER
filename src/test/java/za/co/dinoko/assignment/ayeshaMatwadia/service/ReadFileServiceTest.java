@@ -8,7 +8,6 @@ import za.co.dinoko.assignment.ayeshaMatwadia.entities.Planet;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Route;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 

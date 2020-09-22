@@ -5,10 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import za.co.dinoko.assignment.ayeshaMatwadia.TestData;
 import za.co.dinoko.assignment.ayeshaMatwadia.model.Vertex;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.impl.VertexEdgeServiceImpl;
-
 import java.util.ArrayList;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
