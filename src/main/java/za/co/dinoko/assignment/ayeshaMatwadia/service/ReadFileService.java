@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface ReadFileService {
-
     List<Planet> readPlanetsFromFile(File file);
-
     List<Route> readRoutesFromFile(File file);
 }

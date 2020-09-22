@@ -9,4 +9,5 @@ public interface RouteService {
     List<Route> read();
     void update(Route route);
     void delete(Route route);
+    void saveAll(List<Route> routes);
 }

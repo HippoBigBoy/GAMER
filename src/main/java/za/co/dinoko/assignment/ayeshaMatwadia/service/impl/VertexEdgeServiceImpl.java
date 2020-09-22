@@ -18,22 +18,22 @@ public class VertexEdgeServiceImpl implements VertexEdgeService {
     public Map<String, Vertex> getVertexWithEdgeMap(List<Planet> planets, List<Route> routes) {
         Map<String, Vertex> vertexMap = new HashMap<>();
         for(Planet planet: planets) {
-            vertexMap.put(planet.getPlanetNode(), new Vertex(planet.getPlanetNode(), planet.getPlanetName()));
+            vertexMap.put(planet.getNode(), new Vertex(planet.getNode(), planet.getName()));
         }
         for(Route route: routes) {
-            if(!vertexMap.containsKey(route.getPlanetOrigin())){
-                vertexMap.put(route.getPlanetOrigin(), new Vertex(route.getPlanetOrigin(), UUID.randomUUID().toString()));
+            if(!vertexMap.containsKey(route.getOriginPlanetNode())){
+                vertexMap.put(route.getOriginPlanetNode(), new Vertex(route.getOriginPlanetNode(), UUID.randomUUID().toString()));
             }
-            if(!vertexMap.containsKey(route.getPlanetDestination())){
-                vertexMap.put(route.getPlanetDestination(), new Vertex(route.getPlanetDestination(), UUID.randomUUID().toString()));
+            if(!vertexMap.containsKey(route.getDestinationPlanetNode())){
+                vertexMap.put(route.getDestinationPlanetNode(), new Vertex(route.getDestinationPlanetNode(), UUID.randomUUID().toString()));
             }
-            Vertex originVertex = vertexMap.get(route.getPlanetOrigin());
-            Vertex destinationVertex = vertexMap.get(route.getPlanetDestination());
-            originVertex.addNeighbour(new Edge(route.getDistanceLightYears(), originVertex, destinationVertex));
-            vertexMap.put(route.getPlanetOrigin(),originVertex);
+            Vertex originVertex = vertexMap.get(route.getOriginPlanetNode());
+            Vertex destinationVertex = vertexMap.get(route.getDestinationPlanetNode());
+            originVertex.addNeighbour(new Edge(route.getDistance(), originVertex, destinationVertex));
+            vertexMap.put(route.getOriginPlanetNode(),originVertex);
 //          adding the reverse route
-            destinationVertex.addNeighbour(new Edge(route.getDistanceLightYears(), destinationVertex, originVertex));
-            vertexMap.put(route.getPlanetDestination(), destinationVertex);
+            destinationVertex.addNeighbour(new Edge(route.getDistance(), destinationVertex, originVertex));
+            vertexMap.put(route.getDestinationPlanetNode(), destinationVertex);
         }
         return vertexMap;
     }

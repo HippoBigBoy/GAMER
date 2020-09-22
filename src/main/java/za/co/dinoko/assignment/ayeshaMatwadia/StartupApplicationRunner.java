@@ -9,7 +9,9 @@ import za.co.dinoko.assignment.ayeshaMatwadia.entities.Planet;
 import za.co.dinoko.assignment.ayeshaMatwadia.entities.Route;
 import za.co.dinoko.assignment.ayeshaMatwadia.repository.PlanetRepository;
 import za.co.dinoko.assignment.ayeshaMatwadia.repository.RouteRepository;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.PlanetService;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
+import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteService;
 
 import java.io.File;
 import java.util.List;
@@ -18,12 +20,18 @@ import java.util.List;
 @Order(1)
 public class StartupApplicationRunner implements ApplicationRunner {
 
+    private ReadFileService readFileService;
+    private PlanetService planetService;
+    private RouteService routeService;
+
     @Autowired
-    ReadFileService readFileService;
-    @Autowired
-    PlanetRepository planetRepository;
-    @Autowired
-    RouteRepository routeRepository;
+    public StartupApplicationRunner(ReadFileService readFileService,
+                                    PlanetService planetService,
+                                    RouteService routeService) {
+        this.readFileService = readFileService;
+        this.planetService = planetService;
+        this.routeService = routeService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -32,7 +40,7 @@ public class StartupApplicationRunner implements ApplicationRunner {
         File file = new File(classLoader.getResource(fileName).getFile());
         List<Planet> planets = readFileService.readPlanetsFromFile(file);
         List<Route> routes = readFileService.readRoutesFromFile(file);
-        planetRepository.saveAll(planets);
-        routeRepository.saveAll(routes);
+        planetService.saveAll(planets);
+        routeService.saveAll(routes);
     }
 }

@@ -8,54 +8,51 @@ import java.util.Objects;
 public class Route {
 
     @Id
-    private int routeId;
-
-    private String planetOrigin;
-
-    private String planetDestination;
-
-    private double distanceLightYears;
+    private int id;
+    private String originPlanetNode;
+    private String destinationPlanetNode;
+    private double distance;
 
     public Route() {
     }
 
-    public Route(int routeId, String planetOrigin, String planetDestination, double distanceLightYears) {
-        this.routeId = routeId;
-        this.planetOrigin = planetOrigin;
-        this.planetDestination = planetDestination;
-        this.distanceLightYears = distanceLightYears;
+    public Route(int id, String originPlanetNode, String destinationPlanetNode, double distance) {
+        this.id = id;
+        this.originPlanetNode = originPlanetNode;
+        this.destinationPlanetNode = destinationPlanetNode;
+        this.distance = distance;
     }
 
-    public int getRouteId() {
-        return routeId;
+    public int getId() {
+        return id;
     }
 
-    public void setRouteId(int routeId) {
-        this.routeId = routeId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getPlanetOrigin() {
-        return planetOrigin;
+    public String getOriginPlanetNode() {
+        return originPlanetNode;
     }
 
-    public void setPlanetOrigin(String planetOrigin) {
-        this.planetOrigin = planetOrigin;
+    public void setOriginPlanetNode(String originPlanetNode) {
+        this.originPlanetNode = originPlanetNode;
     }
 
-    public String getPlanetDestination() {
-        return planetDestination;
+    public String getDestinationPlanetNode() {
+        return destinationPlanetNode;
     }
 
-    public void setPlanetDestination(String planetDestination) {
-        this.planetDestination = planetDestination;
+    public void setDestinationPlanetNode(String destinationPlanetNode) {
+        this.destinationPlanetNode = destinationPlanetNode;
     }
 
-    public double getDistanceLightYears() {
-        return distanceLightYears;
+    public double getDistance() {
+        return distance;
     }
 
-    public void setDistanceLightYears(double distanceLightYears) {
-        this.distanceLightYears = distanceLightYears;
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     @Override
@@ -63,14 +60,14 @@ public class Route {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Route route = (Route) o;
-        return routeId == route.routeId &&
-                Double.compare(route.distanceLightYears, distanceLightYears) == 0 &&
-                Objects.equals(planetOrigin, route.planetOrigin) &&
-                Objects.equals(planetDestination, route.planetDestination);
+        return id == route.id &&
+                Double.compare(route.distance, distance) == 0 &&
+                Objects.equals(originPlanetNode, route.originPlanetNode) &&
+                Objects.equals(destinationPlanetNode, route.destinationPlanetNode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(routeId, planetOrigin, planetDestination, distanceLightYears);
+        return Objects.hash(id, originPlanetNode, destinationPlanetNode, distance);
     }
 }

@@ -7,27 +7,32 @@ import za.co.dinoko.assignment.ayeshaMatwadia.service.PlanetService;
 import java.util.List;
 
 @RestController
-public class PlanetInformationController {
+@RequestMapping(value = "/planet")
+public class PlanetInformationAPI {
+
+    private PlanetService planetService;
 
     @Autowired
-    PlanetService planetService;
+    public PlanetInformationAPI(PlanetService planetService) {
+        this.planetService = planetService;
+    }
 
-    @PostMapping(value = "/planet/create")
+    @PostMapping(value = "/create")
     public void create(@RequestBody Planet planet) {
         planetService.create(planet);
     }
 
-    @GetMapping(value = "/planet/read")
+    @GetMapping(value = "/read")
     public List<Planet> read(){
         return planetService.read();
     }
 
-    @PutMapping(value ="/planet/update")
+    @PutMapping(value ="/update")
     public void update(@RequestBody Planet planet) {
         planetService.update(planet);
     }
 
-    @DeleteMapping(value = "/planet/delete")
+    @DeleteMapping(value = "/delete")
     public void delete(@RequestBody Planet planet) {
         planetService.delete(planet);
     }

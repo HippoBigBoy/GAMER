@@ -21,6 +21,10 @@ The name of a planet that appears in the routes but not in the planets list will
 
 Design Decision 3: The endpoints accept JSON and return JSON
 
+Design Decision 4: Since the shortest path algorithm manipulates the objects it gets passed, I decided to keep
+the Entities separate from the Graph model needed for the algorithm. The entities package contains the data I read
+and persist and the model contains objects related to Graphs ie Vertex and Edge objects.
+
 Assumption 1: The file provided with the Planets and their distances will always be in an excel format as
 provided in the assignment zip. It will always follow the format defined in it ie 2 sheets. First sheet
 with the planets and the 2nd sheet containing the distances between planets

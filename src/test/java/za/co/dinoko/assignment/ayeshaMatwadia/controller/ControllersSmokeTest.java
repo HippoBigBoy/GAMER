@@ -9,27 +9,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class ControllersSmokeTest {
     @Autowired
-    PlanetInformationController planetInformationController;
+    PlanetInformationAPI planetInformationAPI;
 
     @Autowired
-    RouteInformationController routeInformationController;
+    RouteInformationAPI routeInformationAPI;
 
     @Autowired
-    ShortestPathController shortestPathController;
+    ShortestPathAPI shortestPathAPI;
 
     @Test
     public void planetInformationControllerContextLoads() {
-        assertThat(planetInformationController).isNotNull();
+        assertThat(planetInformationAPI).isNotNull();
     }
 
     @Test
     public void routeInformationControllerContextLoads() {
-        assertThat(routeInformationController).isNotNull();
+        assertThat(routeInformationAPI).isNotNull();
     }
 
     @Test
     public void shortestPathControllerContextLoads() {
-        assertThat(shortestPathController).isNotNull();
+        assertThat(shortestPathAPI).isNotNull();
     }
 
 }

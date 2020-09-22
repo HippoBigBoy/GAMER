@@ -7,27 +7,32 @@ import za.co.dinoko.assignment.ayeshaMatwadia.service.RouteService;
 import java.util.List;
 
 @RestController
-public class RouteInformationController {
+@RequestMapping(value = "/route")
+public class RouteInformationAPI {
+
+    private RouteService routeService;
 
     @Autowired
-    RouteService routeService;
+    public RouteInformationAPI(RouteService routeService) {
+        this.routeService = routeService;
+    }
 
-    @PostMapping(value = "/route/create")
+    @PostMapping(value = "/create")
     public void create(@RequestBody Route route) {
         routeService.create(route);
     }
 
-    @GetMapping(value = "/route/read")
+    @GetMapping(value = "/read")
     public List<Route> read(){
         return routeService.read();
     }
 
-    @PutMapping(value = "/route/update")
+    @PutMapping(value = "/update")
     public void update(@RequestBody Route route) {
         routeService.update(route);
     }
 
-    @DeleteMapping(value = "/route/delete")
+    @DeleteMapping(value = "/delete")
     public void delete(@RequestBody Route route) {
         routeService.delete(route);
     }

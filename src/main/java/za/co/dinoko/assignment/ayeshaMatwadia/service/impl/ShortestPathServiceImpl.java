@@ -19,7 +19,9 @@ public class ShortestPathServiceImpl implements ShortestPathService {
     private VertexEdgeService vertexEdgeService;
 
     @Autowired
-    public ShortestPathServiceImpl(PlanetService planetService, RouteService routeService, VertexEdgeService vertexEdgeService) {
+    public ShortestPathServiceImpl(PlanetService planetService,
+                                   RouteService routeService,
+                                   VertexEdgeService vertexEdgeService) {
         this.planetService = planetService;
         this.routeService = routeService;
         this.vertexEdgeService = vertexEdgeService;

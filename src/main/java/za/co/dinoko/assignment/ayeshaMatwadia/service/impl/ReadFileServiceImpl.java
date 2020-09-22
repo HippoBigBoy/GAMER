@@ -78,7 +78,7 @@ public class ReadFileServiceImpl implements ReadFileService {
         }
     }
 
-    public Boolean checkIfRowIsEmpty(Row row) {
+    private Boolean checkIfRowIsEmpty(Row row) {
             boolean isEmptyRow = true;
             for(int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++){
                 Cell cell = row.getCell(cellNum);

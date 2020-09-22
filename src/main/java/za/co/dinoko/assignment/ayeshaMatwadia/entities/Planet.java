@@ -8,32 +8,32 @@ import java.util.Objects;
 public class Planet {
 
     @Id
-    private String planetNode;
+    private String node;
 
-    private String planetName;
+    private String name;
 
     public Planet() {
     }
 
-    public Planet(String planetNode, String planetName) {
-        this.planetNode = planetNode;
-        this.planetName = planetName;
+    public Planet(String node, String name) {
+        this.node = node;
+        this.name = name;
     }
 
-    public String getPlanetNode() {
-        return planetNode;
+    public String getNode() {
+        return node;
     }
 
-    public void setPlanetNode(String planetNode) {
-        this.planetNode = planetNode;
+    public void setNode(String node) {
+        this.node = node;
     }
 
-    public String getPlanetName() {
-        return planetName;
+    public String getName() {
+        return name;
     }
 
-    public void setPlanetName(String planetName) {
-        this.planetName = planetName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -41,12 +41,12 @@ public class Planet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Planet planet = (Planet) o;
-        return Objects.equals(planetNode, planet.planetNode) &&
-                Objects.equals(planetName, planet.planetName);
+        return Objects.equals(node, planet.node) &&
+                Objects.equals(name, planet.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(planetNode, planetName);
+        return Objects.hash(node, name);
     }
 }

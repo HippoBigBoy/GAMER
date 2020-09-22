@@ -7,10 +7,14 @@ import za.co.dinoko.assignment.ayeshaMatwadia.service.ShortestPathService;
 import java.util.List;
 
 @RestController
-public class ShortestPathController {
+public class ShortestPathAPI {
+
+    private ShortestPathService shortestPathService;
 
     @Autowired
-    private ShortestPathService shortestPathService;
+    public ShortestPathAPI(ShortestPathService shortestPathService) {
+        this.shortestPathService = shortestPathService;
+    }
 
     @PostMapping(value = "/shortestPath")
     public String getShortestPath(@RequestBody ShortestPathRequest request) {
