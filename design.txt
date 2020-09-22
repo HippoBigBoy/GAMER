@@ -11,14 +11,21 @@ Credit where credit is due: I made use of the following github project for model
 a shortest path algorithm (Dijkstra Algorithm) for a Graph structure in JAVA
 https://gist.github.com/artlovan/a07f29e16ab725f8077157de7abdf125
 
+Design Decision 1: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
+interacting with Microsoft documents. I made use of Apache POI for reading and parsing the data in the excel document.
+
+Design Decision 2: When combing through the data I found that the routes had a node L' that was not included
+in the planets sheet. In this case my implementation will add the Planet to the Map before trying to creating
+the edge for it. (I was experiencing a NullPointerException for this case).
+The name of a planet that appears in the routes but not in the planets list will be a randomly generated String.
+
+Design Decision 3: The endpoints accept JSON and return JSON
+
 Assumption 1: The file provided with the Planets and their distances will always be in an excel format as
 provided in the assignment zip. It will always follow the format defined in it ie 2 sheets. First sheet
 with the planets and the 2nd sheet containing the distances between planets
 Potential Enhancement: Accept other files and formats of this data ie JSON, XML or other entry points ie an
 external webservice call.
-
-Design Decision 1: I decided not to re-invent the wheel. I know of a good Apache library that has a great API for
-interacting with Microsoft documents. I made use of Apache POI for reading and parsing the data in the excel document.
 
 Assumption 2 : I assumed that the data provided in the document is a set ie it does not have any duplicates.
 I have continued coding to this assumption but a possible improvement would be making the List of vertices I build
@@ -29,25 +36,30 @@ start-Earth destination-Moon distance-0.44
 I assumed you would be able to travel backwards as well ie
 start-Moon destination-Earth distance-0.44
 
-Assumption 4 : I when building out the CRUD service I assumed the user that was using this service knew
+Assumption 4 : When building out the CRUD service I assumed the user that was using this service knew
 the galaxy very well and would not delete a critical node or planet. As a potential improvement to this, I would
 implement the checking of the CRUD operations first ie making sure a user isn't deleting a critical node or planet
 I would also make sure the neccessary routes are deleted when a planet is deleted.
 
-Design Decision 2: When combing through the data I found that the routes had a node L' that was not included
-in the planets sheet. In this case my implementation will add the Planet to the Map before trying to creating
-the edge for it. (I was experiencig a NullPointerException for this case).
-The name of a planet that appears in the routes but not in the planets list will be a randomly generated String
-
-Design Decision 3: The endpoints accept JSON and return JSON
+Assumption 5: I assumed that the contract for making requests to my shortest path service would always be followed,
+an origin and destination planet would be specified and those are planets that exist on the system. Given more time
+I would make this more robust. Correctly handling incorrect requests or nodes that do no exist in the system
 
 Improvements: Given the time I would add the following
 1. Logging
 2. Swagger Documentation
-3. Exception handling for Invalid requests
+3. Better CRUD operations
+4. Caching the ShortestPathGraph for Earth since it might be used more. This way we wouldn't
+have to constantly build a new Graph structure.
+5. I would add an Exception Handler and create a RestControllerAdvice to gracefully handle exceptions like
+incorrect requests
+6. I would implement a front end that interacts with the shortest path API.
+7. I would use the 2 constants provided ie light year constant and travel speed constant to determine the
+estimated time of travel
 
-Assumption 5: I assumed that the contract for making requests to my shortest path service would always be followed,
-an origin and destination planet would be specified and those are planets that exist on the system. Given more time
-I would make this more robust. Correctly handling incorrect requests or nodes that do no exist in the system
+I found this question to be a lot of fun to work on and I will most likely continue to work on this project
+within my personal time. Check back after some time and the project may have progressed even further.
+
+https://github.com/ayeshamatwadia/intersteller
 
 
