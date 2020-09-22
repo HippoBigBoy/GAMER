@@ -52,12 +52,12 @@ Improvements: Given the time I would add the following
 4. Caching the ShortestPathGraph for Earth since it might be used more. This way we wouldn't
 have to constantly build a new Graph structure.
 5. I would add an Exception Handler and create a RestControllerAdvice to gracefully handle exceptions like
-incorrect requests
+incorrect requests or missing parameters in the JSON sent to the endpoint
 6. I would implement a front end that interacts with the shortest path API.
 7. I would use the 2 constants provided ie light year constant and travel speed constant to determine the
 estimated time of travel
 
-I found this question to be a lot of fun to work on and I will most likely continue to work on this project
+I found the problem a lot of fun to work on and I will most likely continue to work on this project
 within my personal time. Check back after some time and the project may have progressed even further.
 
 https://github.com/ayeshamatwadia/intersteller
