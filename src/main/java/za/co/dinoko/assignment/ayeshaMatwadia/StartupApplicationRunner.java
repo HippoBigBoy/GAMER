@@ -11,6 +11,7 @@ import za.co.dinoko.assignment.ayeshaMatwadia.repository.PlanetRepository;
 import za.co.dinoko.assignment.ayeshaMatwadia.repository.RouteRepository;
 import za.co.dinoko.assignment.ayeshaMatwadia.service.ReadFileService;
 
+import java.io.File;
 import java.util.List;
 
 @Component
@@ -26,8 +27,11 @@ public class StartupApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<Planet> planets = readFileService.readPlanetsFromFile();
-        List<Route> routes = readFileService.readRoutesFromFile();
+        String fileName = "SupportData-V1.xlsx";
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(fileName).getFile());
+        List<Planet> planets = readFileService.readPlanetsFromFile(file);
+        List<Route> routes = readFileService.readRoutesFromFile(file);
         planetRepository.saveAll(planets);
         routeRepository.saveAll(routes);
     }

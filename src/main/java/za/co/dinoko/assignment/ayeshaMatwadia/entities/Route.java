@@ -2,6 +2,7 @@ package za.co.dinoko.assignment.ayeshaMatwadia.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Route {
@@ -55,5 +56,21 @@ public class Route {
 
     public void setDistanceLightYears(double distanceLightYears) {
         this.distanceLightYears = distanceLightYears;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Route route = (Route) o;
+        return routeId == route.routeId &&
+                Double.compare(route.distanceLightYears, distanceLightYears) == 0 &&
+                Objects.equals(planetOrigin, route.planetOrigin) &&
+                Objects.equals(planetDestination, route.planetDestination);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(routeId, planetOrigin, planetDestination, distanceLightYears);
     }
 }

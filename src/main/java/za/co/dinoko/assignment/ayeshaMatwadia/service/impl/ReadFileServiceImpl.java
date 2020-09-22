@@ -18,11 +18,8 @@ import java.util.*;
 @Service
 public class ReadFileServiceImpl implements ReadFileService {
     @Override
-    public List<Planet> readPlanetsFromFile() {
-        String fileName = "SupportData-V1.xlsx";
+    public List<Planet> readPlanetsFromFile(File file) {
         try{
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(fileName).getFile());
             FileInputStream fileInputStream = new FileInputStream(file);
             Workbook apachePOIWorkbook = new XSSFWorkbook(fileInputStream);
             Sheet firstSheetPlanets = apachePOIWorkbook.getSheetAt(0);
@@ -49,11 +46,8 @@ public class ReadFileServiceImpl implements ReadFileService {
     }
 
     @Override
-    public List<Route> readRoutesFromFile() {
-        String fileName = "SupportData-V1.xlsx";
+    public List<Route> readRoutesFromFile(File file) {
         try{
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(fileName).getFile());
             FileInputStream fileInputStream = new FileInputStream(file);
             Workbook apachePOIWorkbook = new XSSFWorkbook(fileInputStream);
             Sheet secondSheetRoutes = apachePOIWorkbook.getSheetAt(1);
@@ -82,7 +76,7 @@ public class ReadFileServiceImpl implements ReadFileService {
         }
     }
 
-    private Boolean checkIfRowIsEmpty(Row row) {
+    public Boolean checkIfRowIsEmpty(Row row) {
             boolean isEmptyRow = true;
             for(int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++){
                 Cell cell = row.getCell(cellNum);
