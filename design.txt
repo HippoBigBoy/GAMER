@@ -60,6 +60,10 @@ incorrect requests or missing parameters in the JSON sent to the endpoint
 6. I would implement a front end that interacts with the shortest path API.
 7. I would use the 2 constants provided ie light year constant and travel speed constant to determine the
 estimated time of travel
+8. My test coverage across the project is 63% however my service layer has an 83% coverage.
+Since a lot of my code passes responsibility to the framework, and you generally do not test
+the framework, I thought this result was satisfactory. Given more time I would increase my test
+coverage even further by adding integration tests.
 
 I found the problem a lot of fun to work on and I will most likely continue to work on this project
 within my personal time. Check back after some time and the project may have progressed even further.
