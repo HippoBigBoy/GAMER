@@ -70,6 +70,8 @@ public class ReadFileServiceImpl implements ReadFileService {
                     ));
                 }
             }
+            fileInputStream.close();
+            apachePOIWorkbook.close();
             return routes;
         } catch (Exception e){
             throw new RuntimeException(e);
